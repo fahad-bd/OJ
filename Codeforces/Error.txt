@@ -1,0 +1,15 @@
+n = 5
+x = c
+count = 2
+n = 5
+x = b
+count = 5
+n = 1
+x = y
+count = 1
+n = 15
+x = a
+count = 0
+n = 7
+x = t
+count = 6
