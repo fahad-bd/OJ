@@ -1,11 +1,9 @@
+4
+4
+4 3 2 5
 5
-abcde
-c
-abcde
-b
-x
-y
-aaaaaaaaaaaaaaa
-a
-contest
-t
+6 1 10 7 10
+6
+6 6 6 6 6 6
+3
+100 100 0
