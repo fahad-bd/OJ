@@ -25,8 +25,8 @@ const ll MAX = 2e5+5;
 #define test           int T; cin>>T; while(T--)
 #define lp(i,s,e)      for(int i=s;i<e;i++)
 #define lpr(i,s,e)     for(int i=e-1;i>=s;i--)
-#define stlp(it,stl)   for(__typeof(stl.begin()) it=stl.begin();it!=stl.end();it++)cout<<*it<<" "
-#define stlpr(it,stl)  for(__typeof(stl.rbegin()) it=stl.rbegin();it!=stl.rend();it++)cout<<*it<<" "
+#define stlp(it,stl)   for(__typeof(stl.begin()) it=stl.begin();it!=stl.end();it++)//cout<<*it<<" "
+#define stlpr(it,stl)  for(__typeof(stl.rbegin()) it=stl.rbegin();it!=stl.rend();it++)//cout<<*it<<" "
 #define II             ({ ll TEMP; cin>>TEMP; TEMP; })
 #define SI             ({ string TEMP; cin>>TEMP; TEMP; })
 #define AI(a)          ({ int n=sizeof(a)/sizeof(a[0]); lp(I,0,n)a[I]=II; })
@@ -81,6 +81,10 @@ void IO(){
     #endif
 
     #ifndef ONLINE_JUDGE
+    freopen("Error.txt", "w", stderr);
+    #endif
+
+    #ifndef ONLINE_JUDGE
     #define debug(x) cerr << #x <<" = "; _print(x); cerr << endl;
     #else
     #define debug(x)
@@ -89,24 +93,17 @@ void IO(){
 
 void solve();
 
-//main 
 int main()
 {
     IO();
     test 
     solve();
-
     return 0;
 }
 
-void solve(){
-    int n;
-    cin>>n;
-    int ans=0;
-    lp(i,0,n){
-        int a ;
-        cin>>a;
-        ans = ans | a;
-    }
-    cout<<ans<<nl;
+void solve()
+{
+    ll a,b,c;
+    cin>>a>>b>>c;
+    cout<<a+b+c<<" "<<b+c<<" "<<c<<nl;
 }

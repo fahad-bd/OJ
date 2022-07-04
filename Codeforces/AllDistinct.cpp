@@ -102,11 +102,18 @@ int main()
 void solve(){
     int n;
     cin>>n;
-    int ans=0;
+    int arr[n];
+    AI(arr);
+    map<int , int> occer;
     lp(i,0,n){
-        int a ;
-        cin>>a;
-        ans = ans | a;
+        occer[arr[i]]++;
     }
-    cout<<ans<<nl;
+    int ans=0;
+    for(auto i: occer){
+        ans+=(i.se-1);
+    }
+    int k=n-ans;
+    if(ans%2==1)k--;
+
+    cout<<k<<nl;
 }

@@ -100,13 +100,10 @@ int main()
 }
 
 void solve(){
-    int n;
-    cin>>n;
-    int ans=0;
-    lp(i,0,n){
-        int a ;
-        cin>>a;
-        ans = ans | a;
-    }
-    cout<<ans<<nl;
+    int a,b;
+    cin>>a>>b;
+    int n = (a+b)/4;
+    int m = min(a,b);
+    if(n<=m)cout<<n<<nl;
+    else cout<<m<<nl;
 }

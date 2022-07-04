@@ -100,13 +100,19 @@ int main()
 }
 
 void solve(){
-    int n;
-    cin>>n;
-    int ans=0;
+    string s;
+    cin>>s;
+    bool flag=false;
+    int a=0,b=0;
+    int n = sz(s);
     lp(i,0,n){
-        int a ;
-        cin>>a;
-        ans = ans | a;
+        if(s[i]=='A')a++;
+        else b++;
+        if(b>a){
+            flag=true;
+            break;
+        }
     }
-    cout<<ans<<nl;
+    if(flag==true || s[0]=='B' || s[n-1]=='A')cout<<"NO"<<nl;
+    else cout<<"YES"<<nl;
 }

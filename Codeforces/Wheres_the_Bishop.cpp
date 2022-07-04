@@ -100,13 +100,25 @@ int main()
 }
 
 void solve(){
-    int n;
-    cin>>n;
-    int ans=0;
-    lp(i,0,n){
-        int a ;
-        cin>>a;
-        ans = ans | a;
+    char s[8][8];
+    lp(i,0,8){
+        lp(j,0,8)
+        cin>>s[i][j];
     }
-    cout<<ans<<nl;
+    int a=0,b=0;
+   // bool flag = false;
+    lp(i,1,7){
+        lp(j,1,7){
+            if(s[i][j]=='#'){
+                if(s[i-1][j-1]=='#' && s[i-1][j+1]=='#' && s[i+1][j-1]=='#' && s[i+1][j+1]=='#'){
+                a=i;
+                b=j;
+               // flag=true;
+               // break;
+                }
+            }
+        }
+       // if(flag)break;
+    }
+    cout<<a+1<<" "<<b+1<<nl;
 }

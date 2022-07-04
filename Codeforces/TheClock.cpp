@@ -100,13 +100,18 @@ int main()
 }
 
 void solve(){
-    int n;
-    cin>>n;
-    int ans=0;
-    lp(i,0,n){
-        int a ;
-        cin>>a;
-        ans = ans | a;
-    }
-    cout<<ans<<nl;
+    int n,m,a;
+		//scanf("%2d:%2d%d",&p1,&p2,&a);
+        char ch;
+        cin>>n>>ch>>m>>a;
+		int t1=n,t2=m,ans=0;
+		for(int i=1;i<=3600;i++)
+		{
+			t2+=a;
+			if(t2>=60) t1+=t2/60,t2%=60;
+			if(t1>=24) t1%=24;
+			if(t1/10==t2%10 && t1%10==t2/10) ans++;
+			if(t1==n && t2==m) break;
+		}
+	cout<<ans<<nl;
 }

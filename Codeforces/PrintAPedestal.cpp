@@ -102,11 +102,17 @@ int main()
 void solve(){
     int n;
     cin>>n;
-    int ans=0;
-    lp(i,0,n){
-        int a ;
-        cin>>a;
-        ans = ans | a;
-    }
-    cout<<ans<<nl;
+    int a=n/3;
+    int b=n/3;
+    int c=n/3;
+    int m=n%3;
+    m+=3;
+    debug(m);
+    a--;
+    b--;
+    c--;
+    if(m==3)a+=2,b+=1;
+    else if(m==4)a+=3,b+=1;
+    else if(m==5)a+=3,b+=2;
+    cout<<b<<" "<<a<<" "<<c<<nl;
 }
