@@ -111,6 +111,17 @@ void solve(){
     while(k--){
         int a,b;
         cin>>a>>b;
-        
+        if(m[a].empty() || m[b].empty()){
+            cout<<"NO"<<endl;
+            //continue;
+        }
+        else if(a==b){
+            cout<<"YES"<<nl;
+            //continue;
+        }
+        else if(m[a].front()<m[b].back()){
+            cout<<"YES"<<nl;
+        }
+        else cout<<"NO"<<nl;
     }
 }
