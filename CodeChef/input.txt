@@ -1,10 +1,5 @@
-3
-2
-ab
-cd
-3
-aaa
-bab
 4
-abcd
-aaab
+2
+5
+7
+11

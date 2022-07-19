@@ -69,22 +69,6 @@ ll power(ll a, ll b){
     return ans;
 }
 
-vector<ll>isPrime(5000011,1); 
-void prime_sieve(ll n){
-    isPrime[0]=0, isPrime[1]=0;
-    for(ll i=2; i<=n; i+=2){
-        if(i==2)continue;
-        isPrime[i]=0;
-    }
-    for(ll i=3; i*i<=n; i+=2){
-        if(isPrime[i]==1){
-            for(ll j=i*i; j<=n; j+=2*i){
-                isPrime[j]=0;
-            }
-        }
-    }
-}
-
 void IO(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
@@ -109,16 +93,49 @@ void solve();
 int main()
 {
     IO();
-    //test 
+    test 
     solve();
 
     return 0;
 }
 
 void solve(){
-    prime_sieve(100);
-    lp(i,0,100){
-        if(isPrime[i])cout<<i<<" "<<'P'<<nl;
-        else cout<<"NP"<<nl;
+    int n;
+    cin>>n;
+    vector<string>s(n);
+    lp(i,0,n){
+        cin>>s[i];
     }
+
+    map<string,int> freq;
+    lp(i,0,n) freq[s[i]]++;
+
+    string ans(n,'0');
+
+    lp(i,0,n){
+        if(s[i].size()==1)continue;
+        lp(j,0,sz(s[i])-1){
+            string x="",y="";
+            lp(k,0,j){
+                x.pb(s[i][k]);
+            }
+            lp(k,j+1,sz(s[i])){
+                y.pb(s[i][k]);
+            }
+            if(x==y){
+                if(freq[x]>0){
+                    ans[i]='1';
+                    break;
+                }
+            }
+            else{
+                if(freq[x]>0 and freq[y]>0){
+                    ans[i]='1';
+                    break;
+                }
+            }
+            if(ans[i]=='1')break;
+        }
+    }
+    cout<<ans<<nl;
 }

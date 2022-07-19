@@ -25,8 +25,8 @@ const ll MAX = 2e5+5;
 #define test           int T; cin>>T; while(T--)
 #define lp(i,s,e)      for(int i=s;i<e;i++)
 #define lpr(i,s,e)     for(int i=e-1;i>=s;i--)
-#define stlp(it,stl)   for(__typeof(stl.begin()) it=stl.begin();it!=stl.end();it++)cout<<*it<<" "
-#define stlpr(it,stl)  for(__typeof(stl.rbegin()) it=stl.rbegin();it!=stl.rend();it++)cout<<*it<<" "
+#define stlp(it,stl)   for(__typeof(stl.begin()) it=stl.begin();it!=stl.end();it++)//cout<<*it<<" "
+#define stlpr(it,stl)  for(__typeof(stl.rbegin()) it=stl.rbegin();it!=stl.rend();it++)//cout<<*it<<" "
 #define II             ({ ll TEMP; cin>>TEMP; TEMP; })
 #define SI             ({ string TEMP; cin>>TEMP; TEMP; })
 #define AI(a)          ({ int n=sizeof(a)/sizeof(a[0]); lp(I,0,n)a[I]=II; })
@@ -69,22 +69,6 @@ ll power(ll a, ll b){
     return ans;
 }
 
-vector<ll>isPrime(5000011,1); 
-void prime_sieve(ll n){
-    isPrime[0]=0, isPrime[1]=0;
-    for(ll i=2; i<=n; i+=2){
-        if(i==2)continue;
-        isPrime[i]=0;
-    }
-    for(ll i=3; i*i<=n; i+=2){
-        if(isPrime[i]==1){
-            for(ll j=i*i; j<=n; j+=2*i){
-                isPrime[j]=0;
-            }
-        }
-    }
-}
-
 void IO(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
@@ -97,6 +81,10 @@ void IO(){
     #endif
 
     #ifndef ONLINE_JUDGE
+    freopen("Error.txt", "w", stderr);
+    #endif
+
+    #ifndef ONLINE_JUDGE
     #define debug(x) cerr << #x <<" = "; _print(x); cerr << endl;
     #else
     #define debug(x)
@@ -105,20 +93,23 @@ void IO(){
 
 void solve();
 
-//main 
 int main()
 {
     IO();
-    //test 
+    test 
     solve();
-
     return 0;
 }
 
-void solve(){
-    prime_sieve(100);
-    lp(i,0,100){
-        if(isPrime[i])cout<<i<<" "<<'P'<<nl;
-        else cout<<"NP"<<nl;
+void solve()
+{
+    int n;
+    cin>>n;
+    int a,e=0,o=0;
+    lp(i,0,n){
+        cin>>a;
+        if(a%2)o++;
+        else e++;
     }
+    cout<<min(o,e)<<nl;
 }

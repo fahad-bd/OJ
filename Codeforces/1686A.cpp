@@ -69,22 +69,6 @@ ll power(ll a, ll b){
     return ans;
 }
 
-vector<ll>isPrime(5000011,1); 
-void prime_sieve(ll n){
-    isPrime[0]=0, isPrime[1]=0;
-    for(ll i=2; i<=n; i+=2){
-        if(i==2)continue;
-        isPrime[i]=0;
-    }
-    for(ll i=3; i*i<=n; i+=2){
-        if(isPrime[i]==1){
-            for(ll j=i*i; j<=n; j+=2*i){
-                isPrime[j]=0;
-            }
-        }
-    }
-}
-
 void IO(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
@@ -109,16 +93,31 @@ void solve();
 int main()
 {
     IO();
-    //test 
+    test 
     solve();
 
     return 0;
 }
 
 void solve(){
-    prime_sieve(100);
-    lp(i,0,100){
-        if(isPrime[i])cout<<i<<" "<<'P'<<nl;
-        else cout<<"NP"<<nl;
+    int n;
+    cin>>n;
+    int arr[n];
+    AI(arr);
+    int sum=0;
+    lp(i,0,n){
+        sum+=arr[i];
     }
+    int ans=0;
+    int x=n-1;
+    lp(i,0,n){
+        int s=sum-arr[i];
+        int k = arr[i];
+        if(s%x==0 and s/x==k){
+            ans=1;
+            break;
+        }
+    }
+    if(ans)cout<<"YES"<<nl;
+    else cout<<"NO"<<nl;
 }

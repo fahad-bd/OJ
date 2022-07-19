@@ -1,3 +1,4 @@
+//                            In the name of Allah
 #include<bits/stdc++.h> 
 #include<ext/pb_ds/assoc_container.hpp> 
 #include<ext/pb_ds/tree_policy.hpp> 
@@ -11,31 +12,33 @@ const ll MOD = 1e9+7;
 const ll INF = 9e18;
 const ll MAX = 2e5+5;
 
-#define pb             push_back
-#define ppb            pop_back
-#define mp             make_pair
-#define fi             first
-#define se             second 
-#define all(x)         x.begin(), x.end()
-#define rall(x)        x.rbegin(), x.rend()
-#define sz(x)          ((int)(x).size())
-#define sortall(x)     sort(all(x))
-#define setbits        __builtin_popcountll 
-#define zerobits       __builtin_ctzll 
-#define test           int T; cin>>T; while(T--)
-#define lp(i,s,e)      for(int i=s;i<e;i++)
-#define lpr(i,s,e)     for(int i=e-1;i>=s;i--)
-#define stlp(it,stl)   for(__typeof(stl.begin()) it=stl.begin();it!=stl.end();it++)cout<<*it<<" "
-#define stlpr(it,stl)  for(__typeof(stl.rbegin()) it=stl.rbegin();it!=stl.rend();it++)cout<<*it<<" "
-#define II             ({ ll TEMP; cin>>TEMP; TEMP; })
-#define SI             ({ string TEMP; cin>>TEMP; TEMP; })
-#define AI(a)          ({ int n=sizeof(a)/sizeof(a[0]); lp(I,0,n)a[I]=II; })
-#define AO(a)          ({ int n=sizeof(a)/sizeof(a[0]); lp(I,0,n){cout<<(I?" ":"")<<a[I];}})
-#define VI(v)          ({ lp(I,0,v.size())v[I]=II; })
-#define VO(v)          ({ lp(I,0,v.size()){cout<<(I?" ":"")<<v[I];}}) 
-#define mset(a,v)      memset(a,v,sizeof(a))
-#define nl             '\n'
-#define PI             3.1415926535897932384626
+#define pb                      push_back
+#define ppb                     pop_back
+#define mp                      make_pair
+#define PQ                      priority_queue
+#define fi                      first
+#define se                      second 
+#define all(x)                  x.begin(), x.end()
+#define allr(x)                 x.rbegin(), x.rend()
+#define sz(x)                   ((int)(x).size())
+#define sortall(x)              sort(all(x))
+#define sortallr(x)             sort(allr(x))
+#define revS(s)                 reverse(all(s))
+#define setbits                 __builtin_popcountll 
+#define zerobits                __builtin_ctzll 
+#define lcm(a,b)                a/__gcd(a,b)*b
+#define mset(a,v)               memset(a,v,sizeof(a))
+#define nl                      '\n'
+#define test                    int T; cin>>T; while(T--)
+#define lp(i,s,e)               for(int i=s;i<e;i++)
+#define lpr(i,s,e)              for(int i=e-1;i>=s;i--)
+#define II                      ({ ll TEMP; cin>>TEMP; TEMP; })
+#define SI                      ({ string TEMP; cin>>TEMP; TEMP; })
+#define AI(a)                   ({ int n=sizeof(a)/sizeof(a[0]); lp(I,0,n)a[I]=II; })
+#define AO(a)                   ({ int n=sizeof(a)/sizeof(a[0]); lp(I,0,n){cout<<(I?" ":"")<<a[I];}})
+#define VI(v)                   ({ lp(I,0,v.size())v[I]=II; })
+#define VO(v)                   ({ lp(I,0,v.size()){cout<<(I?" ":"")<<v[I];}}) 
+#define PI                      3.1415926535897932384626
 
 template<class T> void _print(T x){cerr<<x;}
 template<class T, class V> void _print(pair <T, V> p) {cerr << "{ "; _print(p.fi); cerr << ", "; _print(p.se); cerr << " }";}
@@ -69,6 +72,13 @@ ll power(ll a, ll b){
     return ans;
 }
 
+bool palindrome(string s){
+    string st=s;
+    revS(st);
+    if(st==s)return true;
+    else return false;
+}
+
 vector<ll>isPrime(5000011,1); 
 void prime_sieve(ll n){
     isPrime[0]=0, isPrime[1]=0;
@@ -85,19 +95,23 @@ void prime_sieve(ll n){
     }
 }
 
-void IO(){
+void IO()
+{
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
 
     #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-    freopen("Error.txt", "w", stderr);
+        freopen("input.txt", "r", stdin);
+        freopen("output.txt", "w", stdout);
     #endif
 
     #ifndef ONLINE_JUDGE
-    #define debug(x) cerr << #x <<" = "; _print(x); cerr << endl;
+        freopen("Error.txt", "w", stderr);
+    #endif
+
+    #ifndef ONLINE_JUDGE
+    #define debug(x) cerr << #x <<" = "; _print(x); cerr << '\n';
     #else
     #define debug(x)
     #endif
@@ -109,16 +123,43 @@ void solve();
 int main()
 {
     IO();
-    //test 
+    test 
     solve();
-
     return 0;
 }
 
-void solve(){
-    prime_sieve(100);
-    lp(i,0,100){
-        if(isPrime[i])cout<<i<<" "<<'P'<<nl;
-        else cout<<"NP"<<nl;
+void solve()
+{
+    int n;
+    cin>>n;
+    vector<int>arr(n);
+    VI(arr);
+
+    if(n%2){
+        lp(i,1,n){
+            if(arr[i]>arr[i+1])
+            swap(arr[i],arr[i+1]);
+            i++;
+        }
     }
+    else{
+        lp(i,0,n){
+            if(arr[i]>arr[i+1])
+            swap(arr[i],arr[i+1]);
+            i++;
+        }
+    }
+
+    debug(arr);
+
+    bool flag=true;
+    lp(i,0,n-1){
+        if(arr[i]>arr[i+1]){
+            flag=false;
+            break;
+        }
+    }
+
+    if(flag)cout<<"YES"<<nl;
+    else cout<<"NO"<<nl;
 }
